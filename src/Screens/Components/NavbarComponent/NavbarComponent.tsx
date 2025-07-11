@@ -1,25 +1,15 @@
 import React, { useState } from "react";
 import { CiHeart, CiLocationOn, CiSearch, CiUser } from "react-icons/ci";
-import { SlBag } from "react-icons/sl";
-import offerImg from "../../../Assets/offerImage.png.jpg";
 import { menuData } from "../../DummyData/DummyData";
-import { IoArrowBack, IoClose, IoMenu } from "react-icons/io5";
-import { FiChevronRight } from "react-icons/fi";
-import { BsChevronDown, BsChevronUp } from "react-icons/bs";
 import {
   ArrowBigDown,
-  BaggageClaim,
   ChevronDown,
   ChevronRight,
   ChevronUp,
   ColumnsSettingsIcon,
-  Heart,
   LocationEdit,
   Menu,
   MessageSquare,
-  Search,
-  User,
-  User2,
 } from "lucide-react";
 import ATMDIalog from "../../../Atoms/ATMDIalog";
 import InquiryFormWrapper from "../../InquiryForm/InquiryFormWrapper";

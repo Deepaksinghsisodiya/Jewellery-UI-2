@@ -3,19 +3,12 @@ import ImagesComponent from "../ImagesComponent/ImagesComponent";
 import SmallImgCarosel from "../../SmallImgCarosel/SmallImgCarosel";
 import SingleSlideCarousel from "../../SingleSlideCurosel/SingleSlideCurosel";
 import RecentImg from "../RecentImg/RecentImg";
-import discover4 from "../../Assets/discover4.png";
-import discover2 from "../../Assets/discover2.png";
-import discover1 from "../../Assets/discover1.png";
 import Carousel from "../../Curosel/Curosel";
 import Footer from "../../Footer/Footer";
 import SwiperComponent from "../Components/SwiperComponent/SwiperComponent";
 import NavbarComponent from "../Components/NavbarComponent/NavbarComponent";
 import MiddleImageComponent from "../Components/MiddleImageComponent/MiddleImageComponent";
 import VideoComponent from "../Components/VideoComponent/VideoComponent";
-import diamondWatchGroup2 from "../../Assets/DiamondWatchGroup2.jpg";
-import diamondWatchGroup3 from "../../Assets/DiamondWatchGroup3.jpg";
-import diamondWatchGroup4 from "../../Assets/DiamondWatchGroup4.jpg";
-import sampleVideo from "../../Assets/DiamondWatchVideo1.mp4";
 import OfferBanner from "../Components/OfferBanner/OfferBanner";
 const Header = () => {
   return (
