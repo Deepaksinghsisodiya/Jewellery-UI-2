@@ -3,7 +3,7 @@ import { sections } from "../Screens/DummyData/DummyData";
 import { Facebook, Instagram, Twitter, Youtube, Linkedin } from "lucide-react";
 import InquiryFormWrapper from "../Screens/InquiryForm/InquiryFormWrapper";
 import ATMDIalog from "../Atoms/ATMDIalog";
-import { useNavigate } from "react-router-dom";
+import InquiryForm from "../Screens/InquiryForm/InquiryForm";
 type FooterProps = {
   onShowTerms: () => void;
 };
@@ -37,25 +37,20 @@ const Footer = ({ onShowTerms }: FooterProps) => {
               </div>
             </div>
             <div className="mt-4 md:mt-0 w-full md:w-auto">
-              <div className="mt-4 md:mt-0 w-full md:w-auto">
-                <button
-                  onClick={() => setOpen(true)}
-                  className="w-full md:w-40 py-3 bg-black text-white text-xs font-semibold"
-                >
-                  INQUIRY NOW
-                </button>
-              </div>
+              <button
+                onClick={() => setOpen(true)}
+                className="w-full md:w-40 py-3 bg-black text-white text-xs font-semibold"
+              >
+                INQUIRY NOW
+              </button>
 
-              {open && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
-                  <div className="bg-white rounded-xl p-6 w-full max-w-xl relative shadow-xl">
-                    <ATMDIalog isOpen={open} onClose={() => setOpen(false)}>
-                      {" "}
-                      <InquiryFormWrapper onClose={() => setOpen(false)} />
-                    </ATMDIalog>
-                  </div>
-                </div>
-              )}
+              <ATMDIalog
+                isOpen={open}
+                onClose={() => setOpen(false)}
+                size="small"
+              >
+                <InquiryFormWrapper onClose={() => setOpen(false)} />
+              </ATMDIalog>
             </div>
           </div>
         </div>
@@ -65,7 +60,6 @@ const Footer = ({ onShowTerms }: FooterProps) => {
 
         {/* 🔹 Footer Links */}
         <div className="w-[90%] mx-auto py-6">
-          {/* Mobile View */}
           <div className="md:hidden space-y-3">
             {sections.map((section, index) => (
               <div key={index} className="border-b pb-1">
@@ -91,10 +85,26 @@ const Footer = ({ onShowTerms }: FooterProps) => {
                 )}
               </div>
             ))}
+
+            <div className="pt-4">
+              <h3 className="text-black font-semibold mb-2">
+                Find Us on Google Maps
+              </h3>
+              <div className="w-full h-64 rounded overflow-hidden">
+                <iframe
+                  src="https://www.google.com/maps?q=7400+Las+Vegas+Blvd+S,+Las+Vegas,+NV+89123&output=embed"
+                  width="100%"
+                  height="100%"
+                  loading="lazy"
+                  allowFullScreen
+                  className="border-0"
+                ></iframe>
+              </div>
+            </div>
           </div>
 
           {/* Desktop View */}
-          <div className="hidden md:grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+          <div className="hidden md:grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
             {sections.map((section, index) => (
               <ul
                 key={index}
@@ -108,6 +118,20 @@ const Footer = ({ onShowTerms }: FooterProps) => {
                 ))}
               </ul>
             ))}
+
+            {/* Map Section for Desktop */}
+            <div className="col-span-1">
+              <div className="w-full h-40 rounded overflow-hidden">
+                <iframe
+                  src="https://www.google.com/maps?q=7400+Las+Vegas+Blvd+S,+Las+Vegas,+NV+89123&output=embed"
+                  width="100%"
+                  height="100%"
+                  loading="lazy"
+                  allowFullScreen
+                  className="border-0"
+                ></iframe>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -142,11 +166,30 @@ const Footer = ({ onShowTerms }: FooterProps) => {
               Terms and Conditions
             </div>
             <div className="inline-flex gap-3 items-center text-gray-600">
-              <Facebook className="cursor-pointer hover:text-black" size={15} />
-              <Instagram
-                className="cursor-pointer hover:text-black"
-                size={15}
-              />
+              <a
+                href="https://www.instagram.com/gkjewelers.nv/?hl=en"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Instagram
+                  className="cursor-pointer hover:text-black"
+                  size={15}
+                  color="red"
+                />
+              </a>
+
+              <a
+                href="https://www.facebook.com/gkjewelersnv"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Facebook
+                  className="cursor-pointer hover:text-black"
+                  size={15}
+                  color="blue"
+                />
+              </a>
+
               <Twitter className="cursor-pointer hover:text-black" size={15} />
               <Youtube className="cursor-pointer hover:text-black" size={15} />
               <Linkedin className="cursor-pointer hover:text-black" size={15} />

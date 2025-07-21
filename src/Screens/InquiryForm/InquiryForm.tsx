@@ -3,79 +3,90 @@ import { Field, Form, FormikProps } from "formik";
 import { InquiryFormValues } from "../../Model/InquiryModel";
 import { Loader2 } from "lucide-react";
 
-interface InquiryFormProps {
+type InquiryFormProps = {
   formik: FormikProps<InquiryFormValues>;
-}
+  onCancel: () => void;
+};
 
-const InquiryForm: React.FC<InquiryFormProps> = ({ formik }) => {
+const InquiryForm = ({ formik, onCancel }: InquiryFormProps) => {
   return (
-    <Form className="w-full max-w-2xl mx-auto bg-white p-3 rounded-2xl shadow-xl border border-gray-200 space-y-4">
-      <h2 className="text-2xl font-bold text-gray-800 text-center">
+    <Form className="w-full max-w-xl mx-auto bg-white p-2 sm:p-6 rounded-2xl border border-gray-200 space-y-2">
+      <h2 className="text-xl sm:text-2xl font-semibold text-center text-gray-800">
         Inquiry Form
       </h2>
 
       {/* Name */}
-      <div className="flex flex-col">
-        <label className="text-sm font-medium text-gray-700 mb-1">
+      <div className="space-y-0">
+        <label htmlFor="name" className="text-sm font-medium text-gray-700">
           Name <span className="text-red-500">*</span>
         </label>
         <Field
+          id="name"
           name="name"
           placeholder="Enter your name"
-          className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full px-3 py-1.5 text-sm border border-gray-300 rounded-sm focus:ring-1 focus:ring-blue-500 outline-none"
         />
         {formik.touched.name && formik.errors.name && (
-          <p className="text-red-500 text-sm mt-1">{formik.errors.name}</p>
+          <p className="text-red-500 text-xs">{formik.errors.name}</p>
         )}
       </div>
 
       {/* Email */}
-      <div className="flex flex-col">
-        <label className="text-sm font-medium text-gray-700 mb-1">
+      <div className="">
+        <label htmlFor="email" className="text-sm font-medium text-gray-700">
           Email <span className="text-red-500">*</span>
         </label>
         <Field
+          id="email"
           type="email"
           name="email"
           placeholder="Enter your email"
-          className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full px-3 py-1.5 text-sm border border-gray-300 rounded-sm focus:ring-1 focus:ring-blue-500 outline-none"
         />
         {formik.touched.email && formik.errors.email && (
-          <p className="text-red-500 text-sm mt-1">{formik.errors.email}</p>
+          <p className="text-red-500 text-xs">{formik.errors.email}</p>
         )}
       </div>
 
       {/* Message */}
-      <div className="flex flex-col">
-        <label className="text-sm font-medium text-gray-700 mb-1">
+      <div className="">
+        <label htmlFor="message" className="text-sm font-medium text-gray-700">
           Message <span className="text-red-500">*</span>
         </label>
         <Field
           as="textarea"
+          id="message"
           name="message"
-          placeholder="I'm interested in your diamond watches. Please send more details."
+          placeholder="Enter your message or inquiry here..."
           rows={4}
-          className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
+          className="w-full px-3 py-2 text-sm border border-gray-300 rounded-sm resize-none focus:ring-1 focus:ring-blue-500 outline-none"
         />
         {formik.touched.message && formik.errors.message && (
-          <p className="text-red-500 text-sm mt-1">{formik.errors.message}</p>
+          <p className="text-red-500 text-xs">{formik.errors.message}</p>
         )}
       </div>
 
-      {/* Submit Button */}
-      <div>
+      {/* Actions */}
+      <div className="flex justify-end gap-3 pt-2">
+        <button
+          type="button"
+          onClick={onCancel}
+          className="px-4 py-1.5 text-sm border text-white rounded-md hover:bg-red-700 transition bg-red-600 font-semibold"
+        >
+          Cancel
+        </button>
         <button
           type="submit"
-          className="w-full py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-all duration-300 flex items-center justify-center"
           disabled={formik.isSubmitting}
+          className="px-5 py-1.5 text-sm bg-blue-600 text-white rounded-md font-medium hover:bg-blue-700 transition disabled:opacity-50 flex items-center"
         >
           {formik.isSubmitting ? (
             <>
-              <Loader2 className="animate-spin h-5 w-5 mr-2" />
+              <Loader2 className="animate-spin h-4 w-4 mr-2" />
               Sending...
             </>
           ) : (
-            "Submit Inquiry"
+            "Submit"
           )}
         </button>
       </div>

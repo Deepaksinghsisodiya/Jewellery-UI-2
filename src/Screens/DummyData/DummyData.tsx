@@ -411,5 +411,5 @@ export const sections = [
       "Privacy Policy",
       "Terms & Conditions",
     ],
-  },
+  }
 ];

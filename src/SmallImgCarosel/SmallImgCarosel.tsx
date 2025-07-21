@@ -2,9 +2,12 @@ import React, { useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import image1 from "../../src/Assets/DiamondWatchGroup1.jpg";
+import image2 from "../../src/Assets/DiamondWatchGroup2.jpg";
+import image3 from "../../src/Assets/DiamondWatchGroup3.jpg";
+import image4 from "../../src/Assets/DiamondWatchGroup4.jpg";
 
 const SmallImgCarosel = () => {
-  const [slideCount, setSlideCount] = useState(4);
 
   const settings = {
     dots: true,
@@ -29,97 +32,97 @@ const SmallImgCarosel = () => {
 
   const images = [
     {
-      src: "https://res.cloudinary.com/dov9enaie/image/upload/v1752208445/DiamondWatchGroup4_eassip.jpg",
+      src: image4,
       alt: "Image 1",
       content: "BEST SELLER | TOP GIFT",
       title: "Moments Heart & Snake Chain Bracelet",
     },
     {
-      src: "https://res.cloudinary.com/dov9enaie/image/upload/v1752208444/DiamondWatchGroup1_q50eqy.jpg",
+      src: image1,
       alt: "Image 2",
       content: "NEW TOP | GIFT",
       title: "Handwritten Love Charm",
     },
     {
-      src: "https://res.cloudinary.com/dov9enaie/image/upload/v1752208444/DiamondWatchGroup2_h2w7ls.jpg",
+      src: image2,
       alt: "Image 3",
       content: "BEST SELLER | TOP GIFT",
       title: "Moments Heart & Snake Chain Bracelet",
     },
     {
-      src: "https://res.cloudinary.com/dov9enaie/image/upload/v1752208414/DiamondWatchGroup3_yzkmiw.jpg",
+      src: image3,
       alt: "Image 4",
       content: "BEST SELLER | TOP GIFT",
       title: "Moments Heart & Snake Chain Bracelet",
     },
     {
-      src: "https://res.cloudinary.com/dov9enaie/image/upload/v1752208445/DiamondWatchGroup4_eassip.jpg",
+      src: image4,
       alt: "Image 1",
       content: "BEST SELLER | TOP GIFT",
       title: "Moments Heart & Snake Chain Bracelet",
     },
     {
-      src: "https://res.cloudinary.com/dov9enaie/image/upload/v1752208444/DiamondWatchGroup1_q50eqy.jpg",
+      src: image1,
       alt: "Image 2",
       content: "NEW TOP | GIFT",
       title: "Handwritten Love Charm",
     },
     {
-      src: "https://res.cloudinary.com/dov9enaie/image/upload/v1752208444/DiamondWatchGroup2_h2w7ls.jpg",
+      src: image2,
       alt: "Image 3",
       content: "BEST SELLER | TOP GIFT",
       title: "Moments Heart & Snake Chain Bracelet",
     },
     {
-      src: "https://res.cloudinary.com/dov9enaie/image/upload/v1752208414/DiamondWatchGroup3_yzkmiw.jpg",
+      src: image3,
       alt: "Image 4",
       content: "BEST SELLER | TOP GIFT",
       title: "Moments Heart & Snake Chain Bracelet",
     },
     {
-      src: "https://res.cloudinary.com/dov9enaie/image/upload/v1752208445/DiamondWatchGroup4_eassip.jpg",
+      src: image4,
       alt: "Image 1",
       content: "BEST SELLER | TOP GIFT",
       title: "Moments Heart & Snake Chain Bracelet",
     },
     {
-      src: "https://res.cloudinary.com/dov9enaie/image/upload/v1752208444/DiamondWatchGroup1_q50eqy.jpg",
+      src: image1,
       alt: "Image 2",
       content: "NEW TOP | GIFT",
       title: "Handwritten Love Charm",
     },
     {
-      src: "https://res.cloudinary.com/dov9enaie/image/upload/v1752208444/DiamondWatchGroup2_h2w7ls.jpg",
+      src: image2,
       alt: "Image 3",
       content: "BEST SELLER | TOP GIFT",
       title: "Moments Heart & Snake Chain Bracelet",
     },
     {
-      src: "https://res.cloudinary.com/dov9enaie/image/upload/v1752208414/DiamondWatchGroup3_yzkmiw.jpg",
+      src: image3,
       alt: "Image 4",
       content: "BEST SELLER | TOP GIFT",
       title: "Moments Heart & Snake Chain Bracelet",
     },
     {
-      src: "https://res.cloudinary.com/dov9enaie/image/upload/v1752208445/DiamondWatchGroup4_eassip.jpg",
+      src: image4,
       alt: "Image 1",
       content: "BEST SELLER | TOP GIFT",
       title: "Moments Heart & Snake Chain Bracelet",
     },
     {
-      src: "https://res.cloudinary.com/dov9enaie/image/upload/v1752208444/DiamondWatchGroup1_q50eqy.jpg",
+      src: image1,
       alt: "Image 2",
       content: "NEW TOP | GIFT",
       title: "Handwritten Love Charm",
     },
     {
-      src: "https://res.cloudinary.com/dov9enaie/image/upload/v1752208444/DiamondWatchGroup2_h2w7ls.jpg",
+      src: image2,
       alt: "Image 3",
       content: "BEST SELLER | TOP GIFT",
       title: "Moments Heart & Snake Chain Bracelet",
     },
     {
-      src: "https://res.cloudinary.com/dov9enaie/image/upload/v1752208414/DiamondWatchGroup3_yzkmiw.jpg",
+      src: image3,
       alt: "Image 4",
       content: "BEST SELLER | TOP GIFT",
       title: "Moments Heart & Snake Chain Bracelet",

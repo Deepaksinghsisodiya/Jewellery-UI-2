@@ -1,4 +1,5 @@
 import React from "react";
+import video1 from "../../../Assets/DiamondWatchVideo1.mp4";
 
 const VideoComponent = () => {
   return (
@@ -7,8 +8,8 @@ const VideoComponent = () => {
         {/* Video Section */}
         <div className="w-full md:w-[60%] h-[300px] md:h-[500px] rounded-2xl overflow-hidden shadow-lg border border-gray-200">
           <video
-            src="https://res.cloudinary.com/dov9enaie/video/upload/v1752209250/DiamondWatchVideo1_nabqsu.mp4"
-            className="w-full h-full object-cover"
+            src={video1}
+            className="w-full h-full object-cover "
             autoPlay
             loop
             muted

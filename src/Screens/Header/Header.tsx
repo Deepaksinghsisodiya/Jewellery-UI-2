@@ -4,12 +4,16 @@ import SmallImgCarosel from "../../SmallImgCarosel/SmallImgCarosel";
 import SingleSlideCarousel from "../../SingleSlideCurosel/SingleSlideCurosel";
 import RecentImg from "../RecentImg/RecentImg";
 import Carousel from "../../Curosel/Curosel";
-import Footer from "../../Footer/Footer";
 import SwiperComponent from "../Components/SwiperComponent/SwiperComponent";
 import NavbarComponent from "../Components/NavbarComponent/NavbarComponent";
 import MiddleImageComponent from "../Components/MiddleImageComponent/MiddleImageComponent";
 import VideoComponent from "../Components/VideoComponent/VideoComponent";
 import OfferBanner from "../Components/OfferBanner/OfferBanner";
+import image1 from "../../Assets/DiamondWatchGroup1.jpg";
+import image2 from "../../Assets/DiamondWatchGroup2.jpg";
+import image3 from "../../Assets/DiamondWatchGroup3.jpg";
+import video4 from "../../Assets/DiamondWatchVideo3.mp4";
+
 const Header = () => {
   return (
     <>
@@ -18,7 +22,7 @@ const Header = () => {
         <NavbarComponent />
         <div>
           <div className="border-b border-gray-300"></div>
-          <div className="w-[90%] mx-auto hidden sm:block">
+          <div className="w-[90%] mx-auto">
             <OfferBanner />
           </div>
         </div>
@@ -37,7 +41,7 @@ const Header = () => {
       </div>
 
       <div className="w-[90%] mx-auto">
-        <div className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold py-2 sm:py-3 md:py-4 text-start sm:text-left">
+        <div className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold py-2 sm:py-3 md:py-2 text-start sm:text-left">
           TOP PICKS FOR YOU
         </div>
         <div>
@@ -48,7 +52,6 @@ const Header = () => {
       </div>
 
       <div>
-        {/* Heading */}
         <div className="w-[90%] mx-auto flex flex-col sm:block items-start sm:items-start text-start sm:text-left">
           <div className="text-4xl sm:text-4xl font-bold inline-block">
             DISCOVER
@@ -60,34 +63,41 @@ const Header = () => {
 
         {/* Media Grid */}
         <div className="w-[90%] mx-auto grid grid-cols-2 lg:grid-cols-4 gap-3 py-10">
-          <div className="w-full h-[300px] sm:h-[350px] lg:h-[450px]">
+          {/* Image 1 */}
+          <div className="w-full h-[300px] sm:h-[350px] lg:h-[450px] overflow-hidden rounded-lg group">
             <img
-              src="https://res.cloudinary.com/dov9enaie/image/upload/v1752208444/DiamondWatchGroup1_q50eqy.jpg"
-              alt="Watch 2"
-              className="w-full h-full object-cover rounded-lg"
+              src={image1}
+              alt="Image 1"
+              className="w-full h-full object-cover transform transition-all duration-700 ease-in-out group-hover:scale-110 group-hover:rotate-1"
             />
           </div>
-          <div className="w-full h-[300px] sm:h-[350px] lg:h-[450px]">
+
+          {/* Image 2 */}
+          <div className="w-full h-[300px] sm:h-[350px] lg:h-[450px] overflow-hidden rounded-lg group">
             <img
-              src="https://res.cloudinary.com/dov9enaie/image/upload/v1752208444/DiamondWatchGroup2_h2w7ls.jpg"
-              alt="Watch 3"
-              className="w-full h-full object-cover rounded-lg"
+              src={image2}
+              alt="Image 2"
+              className="w-full h-full object-cover transform transition-all duration-700 ease-in-out group-hover:scale-110 group-hover:-rotate-1"
             />
           </div>
-          <div className="w-full h-[300px] sm:h-[350px] lg:h-[450px]">
+
+          {/* Video */}
+          <div className="w-full h-[300px] sm:h-[350px] lg:h-[450px] overflow-hidden rounded-lg group">
             <video
-              src="https://res.cloudinary.com/dov9enaie/video/upload/v1752209321/DiamondWatchVideo3_td9fyk.mp4"
-              className="w-full h-full object-cover rounded-lg"
+              src={video4}
+              className="w-full h-full object-cover transform transition-all duration-700 ease-in-out group-hover:scale-110 group-hover:rotate-1"
               autoPlay
               loop
               muted
             />
           </div>
-          <div className="w-full h-[300px] sm:h-[350px] lg:h-[450px]">
+
+          {/* Image 3 */}
+          <div className="w-full h-[300px] sm:h-[350px] lg:h-[450px] overflow-hidden rounded-lg group">
             <img
-              src="https://res.cloudinary.com/dov9enaie/image/upload/v1752208414/DiamondWatchGroup3_yzkmiw.jpg"
-              alt="Watch 4"
-              className="w-full h-full object-cover rounded-lg"
+              src={image3}
+              alt="Image 3"
+              className="w-full h-full object-cover transform transition-all duration-700 ease-in-out group-hover:scale-110 group-hover:-rotate-1"
             />
           </div>
         </div>
@@ -103,7 +113,6 @@ const Header = () => {
       {/* <div>
         <Footer />
       </div> */}
-    
     </>
   );
 };

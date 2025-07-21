@@ -11,8 +11,8 @@ const SingleSlideCarousel = () => {
     slidesToScroll: 1,
     arrows: true,
     appendDots: (dots: any) => (
-      <div className="bg-transparent rounded-lg p-0 mt-4">
-        <ul className="m-0 flex justify-center gap-2"> {dots} </ul>
+      <div className="mt-4">
+        <ul className="flex justify-center gap-2"> {dots} </ul>
       </div>
     ),
     responsive: [
@@ -58,7 +58,7 @@ const SingleSlideCarousel = () => {
     {
       icon: <Check size={40} />,
       title:
-        "Military & Veterans First Responders, Teachers, Students, Nurses and Medical Providers",
+        "Military & Veterans, First Responders, Teachers, Students, Nurses",
       desc: "Get verified with ID.me and save 10% online",
     },
     {
@@ -79,16 +79,16 @@ const SingleSlideCarousel = () => {
   ];
 
   return (
-    <div className="w-full px-1 md:px-1 py-1">
+    <div className="w-full px-2 sm:px-4 py-1">
       <Slider {...settings}>
         {items.map((item, index) => (
-          <div className="px-2" key={index}>
-            <div className="flex flex-col items-center justify-center h-64 sm:h-72 bg-gray-200 text-gray-800 rounded-xl shadow-md p-4 gap-3">
+          <div key={index} className="px-2 flex justify-center">
+            <div className="w-full max-w-xs bg-gray-200 text-gray-800 rounded-xl shadow-md p-4 flex flex-col items-center justify-center h-60 sm:h-64 md:h-72 text-center gap-3">
               <div className="text-primary">{item.icon}</div>
-              <h3 className="text-sm sm:text-base font-semibold text-center px-2">
+              <h3 className="text-sm sm:text-base font-semibold px-2">
                 {item.title}
               </h3>
-              <p className="text-xs sm:text-sm text-center text-gray-600 px-3">
+              <p className="text-xs sm:text-sm text-gray-600 px-3">
                 {item.desc}
               </p>
             </div>

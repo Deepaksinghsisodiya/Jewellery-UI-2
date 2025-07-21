@@ -27,8 +27,6 @@ const NavbarComponent = () => {
     items: string[];
   } | null>(null);
   const [openDialog, setOpenDialog] = useState(false);
-  const [openLocationDialog, setOpenLocationDialog] = useState(false);
-  const [openInquiryDialog, setOpenInquiryDialog] = useState(false);
   const handleLocationClick = () => {
     setOpenDialog(true);
   };
@@ -48,9 +46,6 @@ const NavbarComponent = () => {
           <div className="text-2xl cursor-pointer">
             <Menu className="text-2xl text-gray-500" />
           </div>
-          <div className="sm:hidden flex items-center">
-            <CiSearch className="text-2xl text-gray-500" />
-          </div>
         </div>
 
         {/* Center - Logo */}
@@ -59,130 +54,68 @@ const NavbarComponent = () => {
         </div>
 
         {/* Right Side - Icons */}
-        <div className="flex items-center gap-3">
-          <div className="sm:hidden flex items-center space-x-4">
+        <div className="flex items-center gap-3 relative">
+          {/* Mobile Icons */}
+          <div className="sm:hidden flex items-center gap-4">
             <div
-              onClick={() => setOpenInquiryDialog(true)}
-              className="cursor-pointer"
+              onClick={() => setOpen(true)}
+              className="cursor-pointer text-gray-500"
             >
-              <MessageSquare className="text-2xl text-gray-500" />
+              <MessageSquare className="text-2xl" />
             </div>
             <div
-              onClick={() => setOpenLocationDialog(true)}
-              className="cursor-pointer"
+              onClick={handleLocationClick}
+              className="cursor-pointer text-gray-500"
             >
-              <LocationEdit className="text-2xl text-gray-500" />
+              <LocationEdit className="text-2xl" />
             </div>
           </div>
 
-          {/* Search Bar for Large Screens */}
-          {/* <div className="hidden sm:block py-2 w-[90%] mx-auto">
-            <div className="relative">
-              <input
-                type="text"
-                placeholder="Search"
-                className="h-12 w-full border p-4 pr-10 text-xs"
-              />
-              <Search
-                size={25}
-                className="absolute right-4 top-1/2 transform -translate-y-1/2 text-xl text-gray-500"
-              />
+          {/* Desktop Icons */}
+          <div className="hidden sm:flex flex-row-reverse gap-3">
+            <div
+              onClick={handleLocationClick}
+              className="cursor-pointer pb-1 border-b-2 border-transparent hover:border-pink-500 transition duration-300"
+            >
+              <LocationEdit size={20} />
             </div>
-          </div> */}
-
-          {/* User and Other Icons */}
-          <div className="relative">
-            <div className="hidden sm:flex flex-row-reverse gap-3">
-              {/* <div
-                className="pb-1 border-b-2 border-transparent hover:border-pink-500 transition duration-300 relative"
-                onMouseEnter={() => setShowCard(true)}
-                onMouseLeave={() => setShowCard(false)}
-              >
-                <User2 size={24} />
-                {showCard && (
-                  <div className="absolute top-10 right-[-10px] w-64 bg-white shadow-lg overflow-hidden border z-50 mt-5">
-                    <div className="text-center p-4 border-b">
-                      <h2 className="text-xl font-light">
-                        My <span className="font-bold">GK JEWELER</span>
-                      </h2>
-                    </div>
-                    <div className="p-4 flex flex-col gap-3">
-                      <button className="w-full bg-black text-white py-2 text-sm font-semibold">
-                        LOG IN
-                      </button>
-                      <button className="w-full border border-black text-black py-2 text-sm font-semibold">
-                        JOIN NOW
-                      </button>
-                    </div>
-                    <div className="relative">
-                      <img
-                        src={offerImg}
-                        alt="Join Now"
-                        className="w-full h-44"
-                      />
-                    </div>
-                    <div className="p-4 text-center text-sm">
-                      <a href="#" className="font-semibold underline">
-                        What Is My GK Jeweler?
-                      </a>
-                      <p className="text-gray-600 mt-2 text-xs font-semibold">
-                        *The 10% discount will be in your account 3 days after
-                        you join and is valid for 30 days.
-                      </p>
-                    </div>
-                  </div>
-                )}
-              </div> */}
-
-              <div
-                onClick={handleLocationClick}
-                className="cursor-pointer pb-1 border-b-2 border-transparent hover:border-pink-500 transition duration-300"
-              >
-                <LocationEdit size={20} />
-              </div>
-              <ATMDIalog
-                isOpen={openDialog}
-                onClose={handleClose}
-                title="Our Location"
-              >
-                <div className="relative rounded-xl overflow-hidden shadow-xl border border-gray-300">
-                  {/* Google Map */}
-                  <iframe
-                    title="Google Map"
-                    src="https://www.google.com/maps?q=7400+Las+Vegas+Blvd+S,+Las+Vegas,+NV+89123&output=embed"
-                    loading="lazy"
-                    allowFullScreen
-                    className="w-full md:h-[500px] grayscale-[10%] rounded-md"
-                    style={{ border: "0" }}
-                  ></iframe>
-
-                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-white/90 backdrop-blur-md px-4 py-2 rounded-lg shadow-md border border-gray-200 text-gray-700 text-sm font-medium">
-                    📍 7400 Las Vegas Blvd S, NV 89123
-                  </div>
-                </div>
-              </ATMDIalog>
-
-              <div
-                className="pb-1 border-b-2 border-transparent hover:border-pink-500 transition duration-300"
-                onClick={() => setOpen(true)}
-              >
-                <MessageSquare
-                  className="text-gray-600 hover:text-black"
-                  size={20}
-                />
-              </div>
-              {open && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
-                  <div className="bg-white rounded-xl p-6 w-full max-w-xl relative shadow-xl">
-                    <ATMDIalog isOpen={open} onClose={() => setOpen(false)}>
-                      {" "}
-                      <InquiryFormWrapper onClose={() => setOpen(false)} />
-                    </ATMDIalog>
-                  </div>
-                </div>
-              )}
+            <div
+              className="pb-1 border-b-2 border-transparent hover:border-pink-500 transition duration-300"
+              onClick={() => setOpen(true)}
+            >
+              <MessageSquare
+                className="text-gray-600 hover:text-black"
+                size={20}
+              />
             </div>
           </div>
+
+          {/* Location Dialog (Common) */}
+          <ATMDIalog
+            size="small"
+            isOpen={openDialog}
+            onClose={handleClose}
+            title="Our Location"
+          >
+            <div className="relative rounded-xl overflow-hidden shadow-xl border border-gray-300">
+              <iframe
+                title="Google Map"
+                src="https://www.google.com/maps?q=7400+Las+Vegas+Blvd+S,+Las+Vegas,+NV+89123&output=embed"
+                loading="lazy"
+                allowFullScreen
+                className="w-full md:h-[450px] grayscale-[10%] rounded-md"
+                style={{ border: "0" }}
+              ></iframe>
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-white/90 backdrop-blur-md px-4 py-2 rounded-lg shadow-md border border-gray-200 text-gray-700 text-sm font-medium">
+                📍 7400 Las Vegas Blvd S, NV 89123
+              </div>
+            </div>
+          </ATMDIalog>
+
+          {/* Inquiry Dialog (Common) */}
+          <ATMDIalog isOpen={open} onClose={() => setOpen(false)} size="small">
+            <InquiryFormWrapper onClose={() => setOpen(false)} />
+          </ATMDIalog>
         </div>
 
         {/* Mobile Menu */}
@@ -213,7 +146,6 @@ const NavbarComponent = () => {
               onClick={() => setIsMenuOpen(false)}
             >
               Close
-              <ColumnsSettingsIcon size={24} />
             </button>
           </div>
 

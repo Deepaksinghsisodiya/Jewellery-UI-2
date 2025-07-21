@@ -62,7 +62,7 @@ const InquiryFormWrapper = ({ onClose }: InquiryFormWrapperProps) => {
       validationSchema={validationSchema}
       onSubmit={handleSubmit}
     >
-      {(formik) => <InquiryForm formik={formik} />}
+      {(formik) => <InquiryForm formik={formik} onCancel={onClose} />}
     </Formik>
   );
 };

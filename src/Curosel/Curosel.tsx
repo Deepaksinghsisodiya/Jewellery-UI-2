@@ -2,6 +2,8 @@ import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import DiamondWatch from "../Assets/DiamondWatchSlider02.avif";
+import DiamondWatch2 from "../Assets/DiamondImageSlider2.jpg";
 
 const Carousel = () => {
   const settings = {
@@ -20,10 +22,7 @@ const Carousel = () => {
     ),
   };
 
-  const images = [
-    "https://res.cloudinary.com/dov9enaie/image/upload/v1752208945/DiamondWatchSlider01_cexuqj.jpg",
-    "https://res.cloudinary.com/dov9enaie/image/upload/v1752208449/DiamondWatchSlider02_gwnror.avif",
-  ];
+  const images = [DiamondWatch,DiamondWatch2];
 
   return (
     <div className="w-full mx-auto relative">
@@ -33,7 +32,7 @@ const Carousel = () => {
             <img
               src={img}
               alt={`Slide ${index + 1}`}
-              className="w-full object-cover h-[200px] sm:h-[350px] md:h-[600px]"
+              className="w-full object-cover h-[200px] sm:h-[350px] md:h-[600px] rounded-b-md"
             />
           </div>
         ))}
