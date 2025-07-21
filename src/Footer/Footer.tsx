@@ -3,8 +3,12 @@ import { sections } from "../Screens/DummyData/DummyData";
 import { Facebook, Instagram, Twitter, Youtube, Linkedin } from "lucide-react";
 import InquiryFormWrapper from "../Screens/InquiryForm/InquiryFormWrapper";
 import ATMDIalog from "../Atoms/ATMDIalog";
+import { useNavigate } from "react-router-dom";
+type FooterProps = {
+  onShowTerms: () => void;
+};
 
-const Footer = () => {
+const Footer = ({ onShowTerms }: FooterProps) => {
   const [open, setOpen] = useState(false);
   const [openSections, setOpenSections] = useState<{ [key: number]: boolean }>(
     {}
@@ -131,7 +135,10 @@ const Footer = () => {
             <div className="text-xs hover:underline cursor-pointer">
               Privacy Policy
             </div>
-            <div className="text-xs hover:underline cursor-pointer">
+            <div
+              className="text-xs hover:underline cursor-pointer"
+              onClick={onShowTerms}
+            >
               Terms and Conditions
             </div>
             <div className="inline-flex gap-3 items-center text-gray-600">

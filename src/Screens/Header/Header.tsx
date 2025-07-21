@@ -100,9 +100,10 @@ const Header = () => {
       <div>
         <RecentImg />
       </div>
-      <div>
+      {/* <div>
         <Footer />
-      </div>
+      </div> */}
+    
     </>
   );
 };
