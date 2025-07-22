@@ -46,12 +46,10 @@ const InquiryFormWrapper = ({ onClose }: InquiryFormWrapperProps) => {
         templateParams,
         PUBLIC_KEY
       );
-      console.log("EmailJS response:", res.status, res.text);
       toast.success("Inquiry email sent successfully!");
       resetForm();
       onClose();
     } catch (error: any) {
-      console.error("EmailJS Error:", error);
       toast.error("Failed to send inquiry. Please try again.");
     }
   };

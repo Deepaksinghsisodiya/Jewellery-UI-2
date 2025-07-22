@@ -24,7 +24,6 @@ const RecentImg = () => {
         RECENTLY VIEWED
       </div>
 
-      {/* Wrapper for both grid (desktop) and horizontal scroll (mobile) */}
       <div className="w-[90%] mx-auto">
         {/* For mobile: horizontal scroll */}
         {/* For mobile: horizontal scroll centered */}

@@ -1,19 +1,20 @@
 import React, { useState } from "react";
-import { CiHeart, CiLocationOn, CiSearch, CiUser } from "react-icons/ci";
 import { menuData } from "../../DummyData/DummyData";
 import {
   ArrowBigDown,
   ChevronDown,
   ChevronRight,
   ChevronUp,
-  ColumnsSettingsIcon,
   LocationEdit,
   Menu,
   MessageSquare,
+  User,
 } from "lucide-react";
 import ATMDIalog from "../../../Atoms/ATMDIalog";
 import InquiryFormWrapper from "../../InquiryForm/InquiryFormWrapper";
+import { useNavigate } from "react-router-dom";
 const NavbarComponent = () => {
+  const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showCard, setShowCard] = useState(false);
   const [open, setOpen] = useState(false);
@@ -49,7 +50,10 @@ const NavbarComponent = () => {
         </div>
 
         {/* Center - Logo */}
-        <div className="flex flex-1 font-bold text-3xl sm:text-4xl md:text-5xl sm:text-center justify-center sm:justify-start">
+        <div
+          className="flex flex-1 font-bold text-3xl sm:text-4xl md:text-5xl sm:text-center justify-center sm:justify-start cursor-pointer"
+          onClick={() => navigate("/")}
+        >
           GK JEWELERS
         </div>
 
@@ -155,7 +159,7 @@ const NavbarComponent = () => {
                 <>
                   <li className="flex items-center border-b border-gray-300 px-4 py-3 whitespace-nowrap gap-3">
                     <div className="flex items-center gap-2">
-                      <CiUser size={20} />
+                      <User size={20} />
                       <h2 className="text-sm font-semibold">
                         My <span className="text-sm font-bold">GK JEWELER</span>
                       </h2>

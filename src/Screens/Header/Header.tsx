@@ -36,7 +36,6 @@ const Header = () => {
           <ImagesComponent />
         </div>
 
-        {/* for every text and images */}
         <MiddleImageComponent />
       </div>
 
@@ -110,9 +109,6 @@ const Header = () => {
       <div>
         <RecentImg />
       </div>
-      {/* <div>
-        <Footer />
-      </div> */}
     </>
   );
 };

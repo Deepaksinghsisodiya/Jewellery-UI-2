@@ -10,21 +10,21 @@ type InquiryFormProps = {
 
 const InquiryForm = ({ formik, onCancel }: InquiryFormProps) => {
   return (
-    <Form className="w-full max-w-xl mx-auto bg-white p-2 sm:p-6 rounded-2xl border border-gray-200 space-y-2">
-      <h2 className="text-xl sm:text-2xl font-semibold text-center text-gray-800">
+    <Form className="w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl xl:max-w-3xl mx-auto bg-white p-3 sm:p-6 rounded-xl md:rounded-2xl border border-gray-200 space-y-4 shadow-sm transition-all">
+      <h2 className="text-base sm:text-lg md:text-2xl font-semibold text-center text-gray-800">
         Inquiry Form
       </h2>
 
       {/* Name */}
-      <div className="space-y-0">
-        <label htmlFor="name" className="text-sm font-medium text-gray-700">
+      <div className="space-y-1">
+        <label htmlFor="name" className="text-xs sm:text-sm font-medium text-gray-700">
           Name <span className="text-red-500">*</span>
         </label>
         <Field
           id="name"
           name="name"
           placeholder="Enter your name"
-          className="w-full px-3 py-1.5 text-sm border border-gray-300 rounded-sm focus:ring-1 focus:ring-blue-500 outline-none"
+          className="w-full px-2 py-2 sm:px-3 text-xs sm:text-sm border border-gray-300 rounded-md focus:ring-1 focus:ring-blue-500 outline-none"
         />
         {formik.touched.name && formik.errors.name && (
           <p className="text-red-500 text-xs">{formik.errors.name}</p>
@@ -32,8 +32,8 @@ const InquiryForm = ({ formik, onCancel }: InquiryFormProps) => {
       </div>
 
       {/* Email */}
-      <div className="">
-        <label htmlFor="email" className="text-sm font-medium text-gray-700">
+      <div className="space-y-1">
+        <label htmlFor="email" className="text-xs sm:text-sm font-medium text-gray-700">
           Email <span className="text-red-500">*</span>
         </label>
         <Field
@@ -41,7 +41,7 @@ const InquiryForm = ({ formik, onCancel }: InquiryFormProps) => {
           type="email"
           name="email"
           placeholder="Enter your email"
-          className="w-full px-3 py-1.5 text-sm border border-gray-300 rounded-sm focus:ring-1 focus:ring-blue-500 outline-none"
+          className="w-full px-2 py-2 sm:px-3 text-xs sm:text-sm border border-gray-300 rounded-md focus:ring-1 focus:ring-blue-500 outline-none"
         />
         {formik.touched.email && formik.errors.email && (
           <p className="text-red-500 text-xs">{formik.errors.email}</p>
@@ -49,17 +49,17 @@ const InquiryForm = ({ formik, onCancel }: InquiryFormProps) => {
       </div>
 
       {/* Message */}
-      <div className="">
-        <label htmlFor="message" className="text-sm font-medium text-gray-700">
+      <div className="space-y-1">
+        <label htmlFor="message" className="text-xs sm:text-sm font-medium text-gray-700">
           Message <span className="text-red-500">*</span>
         </label>
         <Field
           as="textarea"
           id="message"
           name="message"
-          placeholder="Enter your message or inquiry here..."
           rows={4}
-          className="w-full px-3 py-2 text-sm border border-gray-300 rounded-sm resize-none focus:ring-1 focus:ring-blue-500 outline-none"
+          placeholder="Enter your message or inquiry here..."
+          className="w-full px-2 py-2 sm:px-3 text-xs sm:text-sm border border-gray-300 rounded-md resize-none focus:ring-1 focus:ring-blue-500 outline-none"
         />
         {formik.touched.message && formik.errors.message && (
           <p className="text-red-500 text-xs">{formik.errors.message}</p>
@@ -67,18 +67,18 @@ const InquiryForm = ({ formik, onCancel }: InquiryFormProps) => {
       </div>
 
       {/* Actions */}
-      <div className="flex justify-end gap-3 pt-2">
+      <div className="flex flex-col sm:flex-row justify-end gap-2 sm:gap-3 pt-2">
         <button
           type="button"
           onClick={onCancel}
-          className="px-4 py-1.5 text-sm border text-white rounded-md hover:bg-red-700 transition bg-red-600 font-semibold"
+          className="px-4 py-2 text-xs sm:text-sm bg-red-600 text-white rounded-md hover:bg-red-700 transition font-medium"
         >
           Cancel
         </button>
         <button
           type="submit"
           disabled={formik.isSubmitting}
-          className="px-5 py-1.5 text-sm bg-blue-600 text-white rounded-md font-medium hover:bg-blue-700 transition disabled:opacity-50 flex items-center"
+          className="px-5 py-2 text-xs sm:text-sm bg-blue-600 text-white rounded-md font-medium hover:bg-blue-700 transition disabled:opacity-50 flex items-center justify-center"
         >
           {formik.isSubmitting ? (
             <>
