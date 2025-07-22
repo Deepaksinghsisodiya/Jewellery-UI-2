@@ -30,22 +30,23 @@ const Footer = ({ onShowTerms }: FooterProps) => {
       <div className="bg-gray-100">
         {/* 🔹 Join Section */}
         <div className="w-[90%] md:w-[60%] mx-auto py-6 text-left">
-          <div className="flex flex-col md:flex-row items-start md:items-center justify-between">
-            <div>
-              <div className="text-lg">
-                {/* Join <span className="text-gray-600 font-normal"> My</span>{" "}
-                <span className="text-black">GK JEWELER</span> */}
-                <div className="text-black font-semibold">Inquiry about</div>
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 w-full">
+            {/* Left content */}
+            <div className="w-full md:w-auto">
+              <div className="text-black font-semibold text-base sm:text-lg">
+                Inquiry about
               </div>
-              <div className="text-xs mt-2">
+              <div className="text-[12px] sm:text-xs mt-2 text-gray-700">
                 Join our rewards program today to earn points, get personal
                 offers and enjoy exclusive benefits.
               </div>
             </div>
-            <div className="mt-4 md:mt-0 w-full md:w-auto">
+
+            {/* Button */}
+            <div className="w-full md:w-auto">
               <button
                 onClick={() => setOpen(true)}
-                className="w-full md:w-40 py-3 bg-black text-white text-xs font-semibold rounded-md hover:bg-gray-600 transition-colors duration-200"
+                className="w-full md:w-40 py-2 sm:py-3 bg-black text-white text-xs font-semibold rounded-md hover:bg-gray-600 transition-colors duration-200"
               >
                 INQUIRY NOW
               </button>
@@ -151,33 +152,32 @@ const Footer = ({ onShowTerms }: FooterProps) => {
         <div className="border-b mx-4 md:mx-8 border-gray"></div>
 
         {/* 🔹 Bottom Section */}
-        <div className="w-[90%] mx-auto py-6 flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+        <div className="w-[90%] mx-auto py-6 flex flex-col md:flex-row justify-between items-center text-center md:text-left gap-4 md:gap-0">
           {/* Left Section */}
-          <div className="flex flex-nowrap gap-4 md:gap-8 items-center overflow-x-auto whitespace-nowrap text-xs">
+          <div className="flex flex-wrap sm:flex-nowrap gap-3 sm:gap-4 md:gap-8 items-center overflow-x-auto sm:overflow-visible whitespace-nowrap text-[11px] sm:text-xs text-gray-700 justify-center md:justify-start w-full md:w-auto">
             <div>© ALL RIGHTS RESERVED. 2025 GK JEWELLERS</div>
             <div className="flex items-center gap-1">
-              {/* <img src={flag} alt="flag-1" className="h-3 w-5" /> */}
-              <div className="text-xs hover:cursor-pointer hover:border-b border-black">
+              <div className="hover:cursor-pointer hover:border-b border-black">
                 United States
               </div>
             </div>
-            <div className="text-xs hover:cursor-pointer hover:border-b border-black">
+            <div className="hover:cursor-pointer hover:border-b border-black">
               English
             </div>
           </div>
 
           {/* Right Section */}
-          <div className="inline-flex flex-wrap gap-4 md:gap-6 mt-4 md:mt-0 items-center">
-            <div className="text-xs hover:underline cursor-pointer">
+          <div className="flex flex-wrap justify-center md:justify-end gap-3 sm:gap-4 md:gap-6 items-center w-full md:w-auto">
+            <div className="text-[11px] sm:text-xs hover:underline cursor-pointer">
               Privacy Policy
             </div>
             <div
-              className="text-xs hover:underline cursor-pointer"
+              className="text-[11px] sm:text-xs hover:underline cursor-pointer"
               onClick={onShowTerms}
             >
               Terms and Conditions
             </div>
-            <div className="inline-flex gap-3 items-center text-gray-600">
+            <div className="flex flex-wrap justify-center gap-2 items-center text-gray-600">
               <a
                 href="https://www.instagram.com/gkjewelers.nv/?hl=en"
                 target="_blank"
@@ -189,7 +189,6 @@ const Footer = ({ onShowTerms }: FooterProps) => {
                   color="red"
                 />
               </a>
-
               <a
                 href="https://www.facebook.com/gkjewelersnv"
                 target="_blank"
@@ -201,7 +200,6 @@ const Footer = ({ onShowTerms }: FooterProps) => {
                   color="blue"
                 />
               </a>
-
               <Twitter className="cursor-pointer hover:text-black" size={15} />
               <Youtube className="cursor-pointer hover:text-black" size={15} />
               <Linkedin className="cursor-pointer hover:text-black" size={15} />

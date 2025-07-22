@@ -96,21 +96,21 @@ const NavbarComponent = () => {
 
           {/* Location Dialog (Common) */}
           <ATMDIalog
-            size="small"
+            size="medium"
             isOpen={openDialog}
             onClose={handleClose}
             title="Our Location"
           >
-            <div className="relative rounded-xl overflow-hidden shadow-xl border border-gray-300">
+            <div className="relative rounded-xl overflow-hidden shadow-xl border border-gray-300 w-full">
               <iframe
                 title="Google Map"
                 src="https://www.google.com/maps?q=7400+Las+Vegas+Blvd+S,+Las+Vegas,+NV+89123&output=embed"
                 loading="lazy"
                 allowFullScreen
-                className="w-full md:h-[450px] grayscale-[10%] rounded-md"
-                style={{ border: "0" }}
+                className="w-full h-[300px] sm:h-[350px] md:h-[400px] lg:h-[450px] grayscale-[10%] rounded-md"
               ></iframe>
-              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-white/90 backdrop-blur-md px-4 py-2 rounded-lg shadow-md border border-gray-200 text-gray-700 text-sm font-medium">
+
+              <div className="absolute bottom-2 left-1/2 -translate-x-1/2 bg-white/90 backdrop-blur-md py-1 sm:px-3 sm:py-2 rounded-lg shadow-md border border-gray-200 text-[11px] sm:text-[13px] text-gray-700 font-medium sm:font-normal w-fit max-w-[90%] text-center">
                 📍 7400 Las Vegas Blvd S, NV 89123
               </div>
             </div>

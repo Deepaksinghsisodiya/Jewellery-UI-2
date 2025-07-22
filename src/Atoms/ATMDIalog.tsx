@@ -8,7 +8,7 @@ type CustomDialogProps = {
   title?: string;
   children: React.ReactNode;
   size?: Size;
-}
+};
 
 const getDialogSizeClasses = (size: Size = "medium") => {
   switch (size) {
@@ -42,14 +42,14 @@ const ATMDIalog: React.FC<CustomDialogProps> = ({
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm transition-opacity">
       <div
-        className={`relative bg-white w-[90%] ${getDialogSizeClasses(
+        className={`relative bg-white w-[95%] ${getDialogSizeClasses(
           size
-        )} overflow-hidden rounded-2xl animate-fadeInScale p-10 sm:p-6 md:p-10`}
+        )} overflow-hidden rounded-2xl animate-fadeInScale p-8 sm:p-6 md:p-10`}
       >
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-3 right-4 p-0 sm:p-0 rounded-full text-gray-700 hover:text-red-500"
+          className="absolute top-3 right-4 sm:p-0 rounded-full text-gray-700 hover:text-red-500"
         >
           Close
         </button>
