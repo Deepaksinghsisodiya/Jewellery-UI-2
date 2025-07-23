@@ -155,7 +155,7 @@ const Footer = ({ onShowTerms }: FooterProps) => {
         <div className="w-[90%] mx-auto py-6 flex flex-col md:flex-row justify-between items-center text-center md:text-left gap-4 md:gap-0">
           {/* Left Section */}
           <div className="flex flex-wrap sm:flex-nowrap gap-3 sm:gap-4 md:gap-8 items-center overflow-x-auto sm:overflow-visible whitespace-nowrap text-[11px] sm:text-xs text-gray-700 justify-center md:justify-start w-full md:w-auto">
-            <div>© ALL RIGHTS RESERVED. 2025 GK JEWELLERS</div>
+            <div>© ALL RIGHTS RESERVED. 2025 GK JEWELERS</div>
             <div className="flex items-center gap-1">
               <div className="hover:cursor-pointer hover:border-b border-black">
                 United States

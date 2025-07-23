@@ -37,7 +37,7 @@ const SwiperComponent = () => {
           </SwiperSlide>
 
           <SwiperSlide>
-            <div className="text-center hover:underline decoration-black">
+            <div className="flex justify-center items-center hover:underline decoration-black gap-1 text-center">
               <span className="text-black text-xs sm:text-xs md:text-sm font-bold">
                 COMPLIMENTARY GIFT WRAPPING
               </span>
