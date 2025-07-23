@@ -13,10 +13,12 @@ import image1 from "../../Assets/DiamondWatchGroup1.jpg";
 import image2 from "../../Assets/DiamondWatchGroup2.jpg";
 import image3 from "../../Assets/DiamondWatchGroup3.jpg";
 import video4 from "../../Assets/DiamondWatchVideo3.mp4";
+import MetaTags from "../../MetaTags/MetaTags";
 
 const Header = () => {
   return (
     <>
+      <MetaTags page="home" />
       <div>
         <SwiperComponent />
         <NavbarComponent />

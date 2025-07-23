@@ -22,13 +22,13 @@ const MiddleImageComponent = () => {
         {/* Heading */}
         <div className="flex flex-row sm:flex-col text-center lg:text-start gap-1">
           <div className="text-lg sm:text-5xl font-bold animate-fadeIn">
-            For every
+           FOR EVERY
           </div>
           <div className="text-lg sm:text-5xl font-bold animate-fadeIn delay-200">
-            special
+            SPECIAL
           </div>
           <div className="text-lg sm:text-5xl font-bold animate-fadeIn delay-400">
-            moment
+            MOMENT
           </div>
         </div>
 

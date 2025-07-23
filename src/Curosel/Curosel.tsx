@@ -17,7 +17,7 @@ const Carousel = () => {
     arrows: true,
     appendDots: (dots: any) => (
       <div className="absolute bottom-2 w-[90%] flex justify-center z-10">
-        <ul className="m-0">{dots}</ul>
+        <ul>{dots}</ul>
       </div>
     ),
   };
