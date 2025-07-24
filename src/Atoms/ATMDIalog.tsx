@@ -13,13 +13,13 @@ type CustomDialogProps = {
 const getDialogSizeClasses = (size: Size = "medium") => {
   switch (size) {
     case "small":
-      return "md:min-w-[40rem] md:max-w-[40rem] min-h-[80-vh] max-h-[80vh]";
+      return "md:min-w-[40rem] md:max-w-[40rem] min-h-[90vh] max-h-[90vh]";
     case "medium":
-      return "md:min-w-[30rem] md:max-w-[50rem] min-h-[45vh] max-h-[85vh]";
+      return "md:min-w-[30rem] md:max-w-[50rem] min-h-[90vh] max-h-[90vh]";
     case "large":
-      return "md:min-w-[50rem] md:max-w-[75rem] min-h-[45vh] max-h-[90vh]";
+      return "md:min-w-[50rem] md:max-w-[75rem] min-h-[90vh] max-h-[95vh]";
     default:
-      return "md:min-w-[20rem] md:max-w-[20rem] min-h-[45vh] max-h-[85vh]";
+      return "md:min-w-[20rem] md:max-w-[20rem] min-h-[90vh] max-h-[90vh]";
   }
 };
 

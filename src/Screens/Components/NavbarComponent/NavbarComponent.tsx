@@ -35,6 +35,8 @@ const NavbarComponent = () => {
   const handleClose = () => {
     setOpenDialog(false);
   };
+  const googleFormEmbedUrl =
+    "https://docs.google.com/forms/d/e/1FAIpQLSeLFF_L7r9J3OP68PLudfjJCGXQVXmSs72M5SYAPswctH98yg/viewform?embedded=true";
 
   return (
     <div>
@@ -90,6 +92,7 @@ const NavbarComponent = () => {
               <MessageSquare
                 className="text-gray-600 hover:text-black"
                 size={20}
+                onClick={() => setOpen(true)}
               />
             </div>
           </div>
@@ -116,9 +119,26 @@ const NavbarComponent = () => {
             </div>
           </ATMDIalog>
 
-          {/* Inquiry Dialog (Common) */}
-          <ATMDIalog isOpen={open} onClose={() => setOpen(false)} size="small">
-            <InquiryFormWrapper onClose={() => setOpen(false)} />
+          <ATMDIalog
+            isOpen={open}
+            onClose={() => setOpen(false)}
+            size="medium"
+            title="Inquiry Form"
+          >
+            <div style={{ position: "relative", height: "85vh" }}>
+              <iframe
+                src={googleFormEmbedUrl}
+                style={{
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  width: "100%",
+                  height: "100%",
+                  border: "0",
+                }}
+                loading="lazy"
+              ></iframe>
+            </div>
           </ATMDIalog>
         </div>
 

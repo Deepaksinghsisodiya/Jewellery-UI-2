@@ -10,6 +10,8 @@ type FooterProps = {
 
 const Footer = ({ onShowTerms }: FooterProps) => {
   const [open, setOpen] = useState(false);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+
   const [openSections, setOpenSections] = useState<{ [key: number]: boolean }>(
     {}
   );
@@ -25,13 +27,14 @@ const Footer = ({ onShowTerms }: FooterProps) => {
       [index]: !prev[index],
     }));
   };
+  const googleFormEmbedUrl =
+    "https://docs.google.com/forms/d/e/1FAIpQLSeLFF_L7r9J3OP68PLudfjJCGXQVXmSs72M5SYAPswctH98yg/viewform?embedded=true";
   return (
     <div>
       <div className="bg-gray-100">
         {/* 🔹 Join Section */}
         <div className="w-[90%] md:w-[60%] mx-auto py-6 text-left">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 w-full">
-            {/* Left content */}
             <div className="w-full md:w-auto">
               <div className="text-black font-semibold text-base sm:text-lg">
                 Inquiry about
@@ -42,16 +45,33 @@ const Footer = ({ onShowTerms }: FooterProps) => {
               </div>
             </div>
 
-            {/* Button */}
-            <a
-              href="https://docs.google.com/forms/d/e/1FAIpQLSdPLi_DldxXG9ZH0tqo7d5pPb-SXDcjZiMVJ3Q3wyAJdNcl_A/viewform?usp=pp_url"
-              target="_blank"
-              rel="noopener noreferrer"
+            <button
+              onClick={() => setIsDialogOpen(true)}
+              className="bg-black text-white px-4 py-2 rounded-md"
             >
-              <button className="bg-black text-white px-4 py-2 rounded-md">
-                Inquiry Form
-              </button>
-            </a>
+              Inquiry Form
+            </button>
+
+            <ATMDIalog
+              isOpen={isDialogOpen}
+              onClose={() => setIsDialogOpen(false)}
+              size="medium"
+            >
+              <div style={{ position: "relative", height: "65vh" }}>
+                <iframe
+                  src={googleFormEmbedUrl}
+                  style={{
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    width: "100%",
+                    height: "100%",
+                    border: "0",
+                  }}
+                  loading="lazy"
+                ></iframe>
+              </div>
+            </ATMDIalog>
           </div>
         </div>
 
