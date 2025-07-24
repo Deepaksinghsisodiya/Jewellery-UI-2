@@ -43,22 +43,15 @@ const Footer = ({ onShowTerms }: FooterProps) => {
             </div>
 
             {/* Button */}
-            <div className="w-full md:w-auto">
-              <button
-                onClick={() => setOpen(true)}
-                className="w-full md:w-40 py-2 sm:py-3 bg-black text-white text-xs font-semibold rounded-md hover:bg-gray-600 transition-colors duration-200"
-              >
-                INQUIRY NOW
+            <a
+              href="https://docs.google.com/forms/d/e/1FAIpQLSdPLi_DldxXG9ZH0tqo7d5pPb-SXDcjZiMVJ3Q3wyAJdNcl_A/viewform?usp=pp_url"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <button className="bg-black text-white px-4 py-2 rounded-md">
+                Inquiry Form
               </button>
-
-              <ATMDIalog
-                isOpen={open}
-                onClose={() => setOpen(false)}
-                size="small"
-              >
-                <InquiryFormWrapper onClose={() => setOpen(false)} />
-              </ATMDIalog>
-            </div>
+            </a>
           </div>
         </div>
 
