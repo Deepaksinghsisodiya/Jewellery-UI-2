@@ -45,33 +45,12 @@ const Footer = ({ onShowTerms }: FooterProps) => {
               </div>
             </div>
 
-            <button
-              onClick={() => setIsDialogOpen(true)}
-              className="bg-black text-white px-4 py-2 rounded-md"
+            <a
+              href={googleFormEmbedUrl}
+              className="bg-black text-white px-4 py-2 rounded-md inline-block text-center"
             >
               Inquiry Form
-            </button>
-
-            <ATMDIalog
-              isOpen={isDialogOpen}
-              onClose={() => setIsDialogOpen(false)}
-              size="medium"
-            >
-              <div style={{ position: "relative", height: "65vh" }}>
-                <iframe
-                  src={googleFormEmbedUrl}
-                  style={{
-                    position: "absolute",
-                    top: 0,
-                    left: 0,
-                    width: "100%",
-                    height: "100%",
-                    border: "0",
-                  }}
-                  loading="lazy"
-                ></iframe>
-              </div>
-            </ATMDIalog>
+            </a>
           </div>
         </div>
 

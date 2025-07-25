@@ -89,11 +89,12 @@ const NavbarComponent = () => {
               className="pb-1 border-b-2 border-transparent hover:border-pink-500 transition duration-300"
               onClick={() => setOpen(true)}
             >
-              <MessageSquare
-                className="text-gray-600 hover:text-black"
-                size={20}
-                onClick={() => setOpen(true)}
-              />
+              <a href={googleFormEmbedUrl}>
+                <MessageSquare
+                  className="text-gray-600 hover:text-black cursor-pointer"
+                  size={20}
+                />
+              </a>
             </div>
           </div>
 
@@ -116,28 +117,6 @@ const NavbarComponent = () => {
               <div className="absolute bottom-2 left-1/2 -translate-x-1/2 bg-white/90 backdrop-blur-md py-1 sm:px-3 sm:py-2 rounded-lg shadow-md border border-gray-200 text-[11px] sm:text-[13px] text-gray-700 font-medium sm:font-normal w-fit max-w-[90%] text-center">
                 📍 7400 Las Vegas Blvd S, NV 89123
               </div>
-            </div>
-          </ATMDIalog>
-
-          <ATMDIalog
-            isOpen={open}
-            onClose={() => setOpen(false)}
-            size="medium"
-            title="Inquiry Form"
-          >
-            <div style={{ position: "relative", height: "85vh" }}>
-              <iframe
-                src={googleFormEmbedUrl}
-                style={{
-                  position: "absolute",
-                  top: 0,
-                  left: 0,
-                  width: "100%",
-                  height: "100%",
-                  border: "0",
-                }}
-                loading="lazy"
-              ></iframe>
             </div>
           </ATMDIalog>
         </div>
