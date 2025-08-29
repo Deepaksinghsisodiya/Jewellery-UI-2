@@ -11,84 +11,86 @@ const SingleSlideCarousel = () => {
     slidesToScroll: 1,
     arrows: true,
     appendDots: (dots: any) => (
-      <div className="mt-4">
+      <div className="mt-8">
         <ul className="flex justify-center gap-2"> {dots} </ul>
       </div>
+    ),
+
+    customPaging: () => (
+      <div className="w-2 h-2 bg-gradient-to-r from-gray-300 to-gray-500 rounded-full hover:scale-110 transition-transform" />
     ),
     responsive: [
       {
         breakpoint: 1024,
-        settings: {
-          slidesToShow: 3,
-        },
+        settings: { slidesToShow: 3 },
       },
       {
         breakpoint: 768,
-        settings: {
-          slidesToShow: 2,
-          arrows: false,
-        },
+        settings: { slidesToShow: 2, arrows: false },
       },
       {
         breakpoint: 640,
-        settings: {
-          slidesToShow: 1,
-          arrows: false,
-        },
+        settings: { slidesToShow: 1, arrows: false },
       },
     ],
   };
 
   const items = [
     {
-      icon: <Heart size={40} />,
+      icon: <Heart size={30} />,
       title: "My GK JEWELERS",
       desc: "Save 10% + Earn Points with your purchases",
     },
     {
-      icon: <CreditCard size={40} />,
+      icon: <CreditCard size={30} />,
       title: "GK Credit Card",
-      desc: "Open a GK Jewelers Credit Card & Save 20% of your first qualifying purchase today",
+      desc: "Open a GK Jewelers Credit Card & Save 20% on your first qualifying purchase today",
     },
     {
-      icon: <Pencil size={40} />,
+      icon: <Pencil size={30} />,
       title: "Student Discount",
-      desc: "Eligible students save 10% with student Beans or ID.me",
+      desc: "Eligible students save 10% with Student Beans or ID.me",
     },
     {
-      icon: <Check size={40} />,
-      title:
-        "Military & Veterans, First Responders, Teachers, Students, Nurses",
+      icon: <Check size={30} />,
+      title: "Military, Veterans, First Responders, Teachers, Nurses",
       desc: "Get verified with ID.me and save 10% online",
     },
     {
-      icon: <Store size={40} />,
-      title: "Free in Store Pickup",
+      icon: <Store size={30} />,
+      title: "Free In-Store Pickup",
       desc: "Buy Online, Pickup In-Store within 2 hours",
     },
     {
-      icon: <CreditCard size={40} />,
+      icon: <CreditCard size={30} />,
       title: "Sparkle Now, Pay Later",
-      desc: "Buy now and pay later, Interest-free with Afterpay or Klarna",
+      desc: "Interest-free installments with Afterpay or Klarna",
     },
     {
-      icon: <CreditCard size={40} />,
+      icon: <CreditCard size={30} />,
       title: "Free Returns",
-      desc: "Prepaid shipping label included with every order.",
+      desc: "Prepaid shipping label included with every order",
     },
   ];
 
   return (
-    <div className="w-full px-2 sm:px-4 py-1">
+    <div className="w-full px-2 sm:px-1 py-6">
       <Slider {...settings}>
         {items.map((item, index) => (
-          <div key={index} className="px-2 flex justify-center">
-            <div className="w-full max-w-xs bg-gray-200 text-gray-800 rounded-xl shadow-md p-4 flex flex-col items-center justify-center h-60 sm:h-64 md:h-72 text-center gap-3">
-              <div className="text-primary">{item.icon}</div>
-              <h3 className="text-sm sm:text-base font-semibold px-2">
+          <div key={index} className="px-1 flex justify-center">
+            <div className="w-full max-w-lg bg-white/80 backdrop-blur-md border border-gray-200 rounded-2xl shadow-md hover:shadow-xl transition duration-300 p-6 flex flex-col items-center justify-center h-60 sm:h-64 md:h-72 text-center gap-4">
+              {/* Icon with glow background */}
+              <div className="w-14 h-14 flex items-center justify-center rounded-full bg-gradient-to-r from-pink-500 to-pink-700 text-white shadow-lg">
+                {item.icon}
+              </div>
+
+              {/* Title */}
+              <h3 className="text-base sm:text-lg font-bold tracking-wide text-gray-900">
                 {item.title}
               </h3>
-              <p className="text-xs sm:text-sm text-gray-600 px-3">
+
+              {/* Description */}
+              <p className="text-sm text-gray-600 leading-relaxed px-2">
                 {item.desc}
               </p>
             </div>

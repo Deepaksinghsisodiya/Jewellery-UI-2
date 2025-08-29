@@ -2,10 +2,8 @@ import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import DiamondWatch from "../Assets/DiamondWatchSlider02.avif";
-import DiamondWatch2 from "../Assets/DiamondImageSlider2.jpg";
 
-const Carousel = () => {
+const Carousel = ({ media }: { media?: { src: string }[] }) => {
   const settings = {
     dots: true,
     infinite: true,
@@ -22,17 +20,17 @@ const Carousel = () => {
     ),
   };
 
-  const images = [DiamondWatch,DiamondWatch2];
+  const images = media && media.length > 0 ? media.map((m) => m.src) : [];
 
   return (
     <div className="w-full mx-auto relative">
       <Slider {...settings}>
-        {images.map((img, index) => (
+        {images?.map((img, index) => (
           <div key={index} className="w-full">
             <img
               src={img}
               alt={`Slide ${index + 1}`}
-              className="w-full object-cover h-[200px] sm:h-[350px] md:h-[600px] rounded-b-md"
+              className="w-full object-cover h-[200px] sm:h-[350px] md:h-[600px] rounded-b-md gap-5"
             />
           </div>
         ))}

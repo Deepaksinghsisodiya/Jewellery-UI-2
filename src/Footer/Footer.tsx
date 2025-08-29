@@ -1,17 +1,12 @@
 import React, { useState } from "react";
 import { sections } from "../Screens/DummyData/DummyData";
 import { Facebook, Instagram, Twitter, Youtube, Linkedin } from "lucide-react";
-import InquiryFormWrapper from "../Screens/InquiryForm/InquiryFormWrapper";
-import ATMDIalog from "../Atoms/ATMDIalog";
 
 type FooterProps = {
   onShowTerms: () => void;
 };
 
 const Footer = ({ onShowTerms }: FooterProps) => {
-  const [open, setOpen] = useState(false);
-  const [isDialogOpen, setIsDialogOpen] = useState(false);
-
   const [openSections, setOpenSections] = useState<{ [key: number]: boolean }>(
     {}
   );
@@ -27,11 +22,10 @@ const Footer = ({ onShowTerms }: FooterProps) => {
       [index]: !prev[index],
     }));
   };
-  const googleFormEmbedUrl =
-    "https://docs.google.com/forms/d/e/1FAIpQLSeLFF_L7r9J3OP68PLudfjJCGXQVXmSs72M5SYAPswctH98yg/viewform?embedded=true";
+  const googleFormEmbedUrl = "https://forms.gle/vBrAjykK16rjEx3P6";
   return (
     <div>
-      <div className="bg-gray-100">
+      <div className="bg-pink-50">
         {/* 🔹 Join Section */}
         <div className="w-[90%] md:w-[60%] mx-auto py-6 text-left">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 w-full">

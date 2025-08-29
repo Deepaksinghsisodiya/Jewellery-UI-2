@@ -2,44 +2,35 @@ import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import image1 from "../../src/Assets/DiamondWatchGroup1.jpg";
-import image2 from "../../src/Assets/DiamondWatchGroup2.jpg";
-import image3 from "../../src/Assets/DiamondWatchGroup3.jpg";
-import image4 from "../../src/Assets/DiamondWatchGroup4.jpg";
 
-const SmallImgCarosel = () => {
+type ImageItem = {
+  src: string;
+  alt?: string;
+  content?: string;
+  title?: string;
+};
+
+type SmallImgCarouselProps = {
+  media?: ImageItem[];
+};
+
+const SmallImgCarousel = ({ media }: SmallImgCarouselProps) => {
+  const imagesToShow = media && media?.length > 0 ? media : [];
+
   const settings = {
-    dots: true, // always enable
+    dots: true,
     infinite: true,
     speed: 500,
     slidesToShow: 4,
     slidesToScroll: 4,
     autoplay: false,
-    arrows: true, // always enable, but conditionally hidden via CSS
+    arrows: true,
     nextArrow: <CustomNextArrow />,
     prevArrow: <CustomPrevArrow />,
     responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
-        },
-      },
-      {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-        },
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
+      { breakpoint: 1024, settings: { slidesToShow: 3, slidesToScroll: 3 } },
+      { breakpoint: 768, settings: { slidesToShow: 2, slidesToScroll: 2 } },
+      { breakpoint: 480, settings: { slidesToShow: 1, slidesToScroll: 1 } },
     ],
     appendDots: (dots: any) => (
       <div className="block sm:hidden mt-4">
@@ -47,57 +38,38 @@ const SmallImgCarosel = () => {
       </div>
     ),
     customPaging: () => (
-      <div className="w-2.5 h-2.5 bg-gray-400 rounded-full hover:bg-black transition-all duration-300" />
+      <div className="w-1.5 h-1.5 bg-gradient-to-r from-gray-300 to-gray-500 rounded-full hover:scale-110 transition-transform" />
     ),
   };
 
-  const images = [
-    {
-      src: image4,
-      alt: "Diamond Watch 1",
-      content: "BEST SELLER | DIAMOND WATCH",
-      title: "Classic Silver Diamond Watch",
-    },
-    {
-      src: image1,
-      alt: "Diamond Watch 2",
-      content: "NEW ARRIVAL | DIAMOND WATCH",
-      title: "Rose Gold Diamond Watch",
-    },
-    {
-      src: image2,
-      alt: "Diamond Watch 3",
-      content: "PREMIUM | DIAMOND WATCH",
-      title: "Midnight Black Diamond Watch",
-    },
-    {
-      src: image3,
-      alt: "Diamond Watch 4",
-      content: "LIMITED EDITION | DIAMOND WATCH",
-      title: "Blue Sapphire Diamond Watch",
-    },
-  ];
-
   return (
-    <div className="w-full mx-auto relative sm:px-6 group">
+    <div className="w-full mx-auto relative sm:px-1 group">
+      <div className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-extrabold py-4 text-start sm:text-left bg-clip-text text-transparent bg-gradient-to-r from-pink-600 to-pink-800">
+        TOP PICKS FOR YOU
+      </div>
+
       <Slider {...settings}>
-        {images.map((img, index) => (
-          <div key={index} className="p-3">
-            <div className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition duration-300 h-full flex flex-col items-center">
-              <div className="w-full h-56 sm:h-64 md:h-72 lg:h-80 overflow-hidden">
+        {imagesToShow?.map((img, index) => (
+          <div key={index} className="p-1">
+            <div className="border rounded-2xl overflow-hidden shadow-lg transition duration-300 h-full flex flex-col items-center group">
+              <div className="w-full h-56 sm:h-64 md:h-72 lg:h-80 overflow-hidden relative">
                 <img
-                  src={img.src}
-                  alt={img.alt}
-                  className="w-full h-full object-cover"
+                  src={img?.src}
+                  alt={img?.alt || `image-${index}`}
+                  className="w-full h-full object-cover transform group-hover:scale-110 transition duration-500"
                 />
               </div>
               <div className="p-3 text-center">
-                <div className="text-xs sm:text-sm text-gray-600">
-                  {img.content}
-                </div>
-                <div className="text-sm sm:text-base font-semibold text-black mt-1">
-                  {img.title}
-                </div>
+                {img?.content && (
+                  <div className="text-xs sm:text-sm tracking-wide text-gray-500 uppercase">
+                    {img?.content}
+                  </div>
+                )}
+                {img?.title && (
+                  <div className="text-sm sm:text-lg font-semibold text-gray-500 mt-1">
+                    {img?.title}
+                  </div>
+                )}
               </div>
             </div>
           </div>
@@ -112,12 +84,12 @@ const CustomNextArrow = (props: any) => {
   return (
     <div
       onClick={onClick}
-      className="hidden sm:flex absolute top-1/2 right-2 transform -translate-y-1/2 z-20 items-center justify-center w-10 h-10 bg-white rounded-full shadow-md cursor-pointer transition hover:scale-110"
+      className="hidden sm:flex absolute top-1/2 right-3 transform -translate-y-1/2 z-20 items-center justify-center w-11 h-11 bg-gradient-to-r from-pink-500 to-pink-700 rounded-full shadow-lg cursor-pointer transition hover:scale-110"
     >
       <img
         src="https://cdn-icons-png.flaticon.com/512/271/271228.png"
         alt="Next"
-        className="w-4 h-4"
+        className="w-4 h-4 filter invert"
       />
     </div>
   );
@@ -128,15 +100,15 @@ const CustomPrevArrow = (props: any) => {
   return (
     <div
       onClick={onClick}
-      className="hidden sm:flex absolute top-1/2 left-2 transform -translate-y-1/2 z-20 items-center justify-center w-10 h-10 bg-white rounded-full shadow-md cursor-pointer transition hover:scale-110"
+      className="hidden sm:flex absolute top-1/2 left-3 transform -translate-y-1/2 z-20 items-center justify-center w-11 h-11 bg-gradient-to-r from-pink-500 to-pink-700 rounded-full shadow-lg cursor-pointer transition hover:scale-110"
     >
       <img
         src="https://cdn-icons-png.flaticon.com/512/271/271220.png"
         alt="Prev"
-        className="w-4 h-4"
+        className="w-4 h-4 filter invert"
       />
     </div>
   );
 };
 
-export default SmallImgCarosel;
+export default SmallImgCarousel;

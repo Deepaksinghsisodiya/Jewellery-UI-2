@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { menuData } from "../../DummyData/DummyData";
+import React, { useState, useEffect } from "react";
+import { categoryData } from "../../DummyData/DummyData";
 import {
   ArrowBigDown,
   ChevronDown,
@@ -10,16 +10,23 @@ import {
   MessageSquare,
   User,
 } from "lucide-react";
+import { useNavigate, useParams, useLocation } from "react-router-dom";
+import GkJwelersLogo from "../../../Assets/GkJewelersLogo.png";
 import ATMDIalog from "../../../Atoms/ATMDIalog";
-import InquiryFormWrapper from "../../InquiryForm/InquiryFormWrapper";
-import { useNavigate } from "react-router-dom";
+
 const NavbarComponent = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const { catId, subCatId } = useParams();
+  const activeCategoryId =
+    catId || (location.pathname === "/" ? String(categoryData[0]?.id) : null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [showCard, setShowCard] = useState(false);
   const [open, setOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const [activeSubIndex, setActiveSubIndex] = useState<number | null>(null);
   const [selectedItem, setSelectedItem] = useState<{
+    id: any;
+    subCategories: any;
     title: string;
     subItems: { title: string; items: string[] }[];
   } | null>(null);
@@ -27,7 +34,9 @@ const NavbarComponent = () => {
     title: string;
     items: string[];
   } | null>(null);
+
   const [openDialog, setOpenDialog] = useState(false);
+
   const handleLocationClick = () => {
     setOpenDialog(true);
   };
@@ -35,70 +44,99 @@ const NavbarComponent = () => {
   const handleClose = () => {
     setOpenDialog(false);
   };
-  const googleFormEmbedUrl =
-    "https://docs.google.com/forms/d/e/1FAIpQLSeLFF_L7r9J3OP68PLudfjJCGXQVXmSs72M5SYAPswctH98yg/viewform?embedded=true";
+  const handleSubcategoryClick = (catId: any, subCatId: any) => {
+    navigate(`/category/${catId}/${subCatId}`);
+  };
+
+  const googleFormEmbedUrl = "https://forms.gle/vBrAjykK16rjEx3P6";
+
+  useEffect(() => {
+    const currentCatId = catId || String(categoryData[0]?.id);
+    const index = categoryData.findIndex((c) => String(c.id) === currentCatId);
+    setActiveIndex(index !== -1 ? index : 0);
+  }, [catId, location.pathname]);
+
+  useEffect(() => {
+    if (activeIndex !== null && subCatId) {
+      const subIndex = categoryData[activeIndex]?.subCategories?.findIndex(
+        (sub) => String(sub.id) === subCatId
+      );
+      setActiveSubIndex(subIndex !== -1 ? subIndex : null);
+    } else {
+      setActiveSubIndex(null);
+    }
+  }, [subCatId, activeIndex]);
+  useEffect(() => {
+  setActiveIndex(null);
+}, [location]);
 
   return (
-    <div>
+    <div className="w-full">
       <div className="flex items-center w-[90%] mx-auto justify-between">
         {/* Left Side - Hamburger Menu */}
         <div
-          className="sm:hidden flex gap-3 py-4"
+          className="sm:hidden flex gap-3 py-3"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
-          <div className="text-2xl cursor-pointer">
-            <Menu className="text-2xl text-gray-500" />
-          </div>
+          <Menu className="text-2xl text-gray-600 cursor-pointer" size={18} />
         </div>
 
         {/* Center - Logo */}
         <div
-          className="flex flex-1 font-bold text-3xl sm:text-4xl md:text-5xl sm:text-center justify-center sm:justify-start cursor-pointer"
+          className="flex flex-1 justify-center sm:justify-start cursor-pointer items-center"
           onClick={() => navigate("/")}
         >
-          GK JEWELERS
+          <img
+            src={GkJwelersLogo}
+            alt="GK JEWELERS Logo"
+            className="w-6 h-6 sm:w-10 sm:h-10 ml-1 sm:ml-2 object-contain drop-shadow-md"
+          />
+          <h1
+            className="text-transparent bg-clip-text 
+          bg-gradient-to-r from-pink-500 via-pink-400 to-rose-500
+          font-playfair font-extrabold tracking-wide sm:tracking-widest italic
+          text-xl sm:text-3xl md:text-4xl lg:text-5xl ml-2 sm:ml-3 drop-shadow-lg"
+          >
+            GK JEWELERS
+          </h1>
         </div>
 
-        {/* Right Side - Icons */}
+        {/* Right Side Icons */}
         <div className="flex items-center gap-3 relative">
-          {/* Mobile Icons */}
           <div className="sm:hidden flex items-center gap-4">
-            <div
-              onClick={() => setOpen(true)}
-              className="cursor-pointer text-gray-500"
-            >
-              <MessageSquare className="text-2xl" />
-            </div>
-            <div
+            {/* Google Form link */}
+            <MessageSquare
+              size={18}
+              onClick={() => (window.location.href = googleFormEmbedUrl)}
+              className="text-xs text-gray-600 cursor-pointer"
+            />
+
+            {/* Location dialog */}
+            <LocationEdit
+              size={18}
               onClick={handleLocationClick}
-              className="cursor-pointer text-gray-500"
-            >
-              <LocationEdit className="text-2xl" />
-            </div>
+              className="text-xs text-gray-600 cursor-pointer"
+            />
           </div>
 
-          {/* Desktop Icons */}
-          <div className="hidden sm:flex flex-row-reverse gap-3">
-            <div
-              onClick={handleLocationClick}
-              className="cursor-pointer pb-1 border-b-2 border-transparent hover:border-pink-500 transition duration-300"
-            >
-              <LocationEdit size={20} />
+          <div className="hidden sm:flex flex-row-reverse gap-4">
+            <div className="cursor-pointer pb-1 border-b-2 border-transparent hover:border-pink-500 transition duration-300">
+              <LocationEdit
+                onClick={handleLocationClick}
+                size={20}
+                className="text-gray-700"
+              />
             </div>
-            <div
-              className="pb-1 border-b-2 border-transparent hover:border-pink-500 transition duration-300"
-              onClick={() => setOpen(true)}
-            >
+            <div className="pb-1 border-b-2 border-transparent hover:border-pink-500 transition duration-300">
               <a href={googleFormEmbedUrl}>
                 <MessageSquare
+                  onClick={() => setOpen(true)}
                   className="text-gray-600 hover:text-black cursor-pointer"
                   size={20}
                 />
               </a>
             </div>
           </div>
-
-          {/* Location Dialog (Common) */}
           <ATMDIalog
             size="medium"
             isOpen={openDialog}
@@ -120,136 +158,171 @@ const NavbarComponent = () => {
             </div>
           </ATMDIalog>
         </div>
-
-        {/* Mobile Menu */}
-        <div
-          className={`sm:hidden bg-white fixed top-0 left-0 w-[90%] h-screen transition-transform ${
-            isMenuOpen ? "translate-x-0 z-20" : "-translate-x-full"
-          }`}
-        >
-          <div className="flex justify-between items-center px-4 py-3 border-b bg-gray-100">
-            {selectedItem || selectedSubItem ? (
-              <button
-                className="text-gray-600 hover:text-black flex items-center gap-1"
-                onClick={() =>
-                  selectedSubItem
-                    ? setSelectedSubItem(null)
-                    : setSelectedItem(null)
-                }
-              >
-                <ArrowBigDown size={22} />
-                <span className="text-lg font-semibold">Back</span>
-              </button>
-            ) : (
-              <div></div>
-            )}
-
-            <button
-              className="flex items-center gap-2 text-gray-600 hover:text-black text-lg"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Close
-            </button>
-          </div>
-
-          <div className="h-[calc(100vh-60px)] overflow-hidden overflow-y-auto">
-            <ul className="overflow-y-auto h-full bg-white mt-2">
-              {!selectedItem && !selectedSubItem && (
-                <>
-                  <li className="flex items-center border-b border-gray-300 px-4 py-3 whitespace-nowrap gap-3">
-                    <div className="flex items-center gap-2">
-                      <User size={20} />
-                      <h2 className="text-sm font-semibold">
-                        My <span className="text-sm font-bold">GK JEWELER</span>
-                      </h2>
-                    </div>
-                    <span className="text-sm font-semibold text-gray-700">
-                      LOG IN / JOIN NOW
-                    </span>
-                  </li>
-                  {menuData.map((menu, index) => (
-                    <li
-                      key={index}
-                      className="py-4 px-4 border-b cursor-pointer font-semibold flex justify-between items-center text-lg"
-                      onClick={() => setSelectedItem(menu)}
-                    >
-                      {menu.title}
-                      <ChevronRight className="text-gray-500" />
-                    </li>
-                  ))}
-                </>
-              )}
-              {selectedItem &&
-                !selectedSubItem &&
-                selectedItem.subItems.map((subItem, subIndex) => (
-                  <li
-                    key={subIndex}
-                    className="py-3 px-4 border-b cursor-pointer font-semibold flex justify-between items-center"
-                    onClick={() => setSelectedSubItem(subItem)}
-                  >
-                    {subItem.title}
-                    <ChevronRight className="text-gray-500" />
-                  </li>
-                ))}
-              {selectedSubItem &&
-                selectedSubItem.items.map((item, itemIndex) => (
-                  <li key={itemIndex} className="ml-4 text-sm py-3">
-                    {item}
-                  </li>
-                ))}
-            </ul>
-          </div>
-        </div>
       </div>
 
-      <div className="bg-pink-300 w-full h-1"></div>
-      <div>
+      <div className="bg-pink-300 w-full h-[2px]"></div>
+
+      {/* Desktop Navbar */}
+      <div className="hidden sm:block">
         <nav className="relative w-[90%] mx-auto py-2 flex gap-6">
           <div className="relative w-full">
             <div className="flex gap-6">
-              {menuData.map((menu, menuIndex) => (
-                <div
-                  key={menuIndex}
-                  className="relative"
-                  onMouseEnter={() => setActiveIndex(menuIndex)}
-                  onMouseLeave={() => setActiveIndex(null)}
-                >
-                  {/* Menu Title */}
-                  <div className="cursor-pointer hidden sm:flex items-center gap-1 text-xs font-semibold uppercase border-b-2 border-transparent hover:border-pink-500 py-1">
-                    {menu.title}
-                    {activeIndex === menuIndex ? (
-                      <ChevronUp className="w-3 h-3 text-gray-600" />
-                    ) : (
-                      <ChevronDown className="w-3 h-3 text-gray-600" />
-                    )}
+              {categoryData?.map((menu, menuIndex) => {
+                const currentCat =
+                  catId ||
+                  (location.pathname === "/"
+                    ? String(categoryData[0]?.id)
+                    : null);
+                const isActive = String(menu.id) === currentCat;
+
+                return (
+                  <div key={menuIndex} className="relative">
+                    <div
+                      className={`cursor-pointer hidden sm:flex items-center gap-1 text-xs md:text-[10px] font-semibold uppercase py-1 ${
+                        isActive
+                          ? "border-b-2 border-pink-500 text-pink-500"
+                          : "border-b-2 border-transparent text-black"
+                      } hover:border-pink-500 hover:text-pink-500 transition-colors duration-300`}
+                      onClick={() => {
+                        setActiveIndex(
+                          activeIndex === menuIndex ? null : menuIndex
+                        );
+                        setActiveSubIndex(null);
+                      }}
+                    >
+                      {menu?.category}
+                      {activeIndex === menuIndex ? (
+                        <ChevronUp className="w-3 h-3 text-pink-500" />
+                      ) : (
+                        <ChevronDown className="w-3 h-3 text-gray-600" />
+                      )}
+                    </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
 
+            {/* Subcategories */}
             {activeIndex !== null && (
-              <div className="absolute left-0 top-full w-screen h-screen bg-white shadow-lg border p-6 grid grid-cols-4 gap-6 mt-2 z-50">
-                {menuData[activeIndex]?.subItems.map((subItem, subIndex) => (
-                  <div key={subIndex}>
-                    <h4 className="text-sm font-semibold text-black mb-2">
-                      {subItem.title}
-                    </h4>
-                    <ul className="text-xs text-gray-600 space-y-1 inline-block">
-                      {subItem.items.map((item, itemIndex) => (
-                        <li
-                          key={itemIndex}
-                          className="hover:text-black hover:border-b hover:border-black cursor-pointer pb-1"
-                        >
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                ))}
-              </div>
-            )}
+  <div className="absolute left-0 top-full w-full bg-red-50 shadow-lg border p-3 grid grid-cols-2 md:grid-cols-4 gap-2 mt-2 z-50">
+    {categoryData[activeIndex]?.subCategories?.map((sub, subIndex) => {
+      const isSubActive = String(sub.id) === subCatId;
+      return (
+        <div key={subIndex}>
+          <h4
+            className={`text-xs font-semibold mb-3 cursor-pointer inline-block border-b-2 ${
+              isSubActive
+                ? "text-pink-500 border-pink-500"
+                : "text-black border-transparent"
+            } hover:text-pink-500 hover:border-pink-500 transition-colors duration-300`}
+            onClick={() =>
+              handleSubcategoryClick(
+                categoryData[activeIndex].id,
+                sub?.id
+              )
+            }
+          >
+            {sub?.name}
+          </h4>
+        </div>
+      );
+    })}
+  </div>
+)}
+
+
           </div>
         </nav>
+      </div>
+
+      {/* Mobile Menu */}
+      <div
+        className={`sm:hidden bg-white fixed top-0 left-0 w-[85%] max-w-[320px] h-screen transition-transform ${
+          isMenuOpen ? "translate-x-0 z-20" : "-translate-x-full"
+        }`}
+      >
+        <div className="flex justify-between items-center px-4 py-3 border-b bg-gray-100">
+          {selectedItem || selectedSubItem ? (
+            <button
+              className="text-gray-600 hover:text-black flex items-center gap-1"
+              onClick={() =>
+                selectedSubItem
+                  ? setSelectedSubItem(null)
+                  : setSelectedItem(null)
+              }
+            >
+              <ArrowBigDown size={22} />
+              <span className="text-lg font-semibold">Back</span>
+            </button>
+          ) : (
+            <div></div>
+          )}
+
+          <button
+            className="flex items-center gap-2 text-gray-600 hover:text-black text-lg"
+            onClick={() => setIsMenuOpen(false)}
+          >
+            Close
+          </button>
+        </div>
+
+        <div className="h-[calc(100vh-60px)] overflow-y-auto">
+          <ul className="bg-white">
+            {/* Main Categories */}
+            {!selectedItem && !selectedSubItem && (
+              <>
+                <li className="flex items-center border-b border-gray-300 px-4 py-3 whitespace-nowrap gap-3">
+                  <div className="flex items-center gap-2">
+                    <User size={20} />
+                    <h2 className="text-sm font-semibold">
+                      My <span className="text-sm font-bold">GK JEWELER</span>
+                    </h2>
+                  </div>
+                  <span className="text-sm font-semibold text-gray-700 ml-auto">
+                    LOG IN / JOIN NOW
+                  </span>
+                </li>
+                {categoryData?.map((menu: any, index: number) => (
+                  <li
+                    key={menu.id || index}
+                    className={`py-4 px-4 border-b cursor-pointer font-semibold flex justify-between items-center text-base ${
+                      String(menu.id) === (catId || String(categoryData[0]?.id))
+                        ? "border-l-4 border-pink-500 pl-2"
+                        : ""
+                    }`}
+                    onClick={() => {
+                      setSelectedItem(menu);
+                      setSelectedSubItem(null); // Reset subcategory when switching category
+                    }}
+                  >
+                    {menu.category}
+                    <ChevronRight className="text-gray-500" />
+                  </li>
+                ))}
+              </>
+            )}
+
+            {/* Subcategories */}
+            {selectedItem &&
+              !selectedSubItem &&
+              selectedItem?.subCategories?.length > 0 &&
+              selectedItem.subCategories.map(
+                (subItem: any, subIndex: number) => (
+                  <li
+                    key={subItem.id || subIndex}
+                    className="py-3 px-4 border-b cursor-pointer font-semibold flex justify-between items-center"
+                    onClick={() => {
+                      setSelectedSubItem(subItem);
+                      navigate(`/category/${selectedItem?.id}/${subItem?.id}`);
+                    }}
+                  >
+                    {subItem.name}
+                    <ChevronRight className="text-gray-500" />
+                  </li>
+                )
+              )}
+          </ul>
+        </div>
       </div>
     </div>
   );
