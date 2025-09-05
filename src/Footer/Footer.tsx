@@ -1,15 +1,18 @@
 import React, { useState } from "react";
-import { sections } from "../Screens/DummyData/DummyData";
 import { Facebook, Instagram, Twitter, Youtube, Linkedin } from "lucide-react";
+import { sections } from "../Screens/DummyData/DummyData";
 
 type FooterProps = {
   onShowTerms: () => void;
+  selectedCategory: string;
 };
 
-const Footer = ({ onShowTerms }: FooterProps) => {
+const Footer = ({ onShowTerms, selectedCategory }: FooterProps) => {
   const [openSections, setOpenSections] = useState<{ [key: number]: boolean }>(
     {}
   );
+  const footerSections = sections(selectedCategory); // ✅ dynamic links
+
   const handleClick = (link: string) => {
     if (link === "Terms & Conditions") {
       onShowTerms();
@@ -55,7 +58,7 @@ const Footer = ({ onShowTerms }: FooterProps) => {
         <div className="w-[90%] mx-auto py-6">
           {/* Mobile View */}
           <div className="md:hidden space-y-3">
-            {sections.map((section, index) => (
+            {footerSections.map((section, index) => (
               <div key={index} className="border-b pb-1">
                 <div
                   className="flex justify-between items-center py-1 cursor-pointer"
@@ -103,7 +106,7 @@ const Footer = ({ onShowTerms }: FooterProps) => {
 
           {/* Desktop View */}
           <div className="hidden md:grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-            {sections.map((section, index) => (
+            {footerSections.map((section, index) => (
               <ul
                 key={index}
                 className="list-none space-y-2 text-xs text-gray-600"
@@ -172,7 +175,7 @@ const Footer = ({ onShowTerms }: FooterProps) => {
                 <Instagram
                   className="cursor-pointer hover:text-black"
                   size={15}
-                  color="red"
+                  color="#E1306C"
                 />
               </a>
               <a
@@ -183,12 +186,11 @@ const Footer = ({ onShowTerms }: FooterProps) => {
                 <Facebook
                   className="cursor-pointer hover:text-black"
                   size={15}
-                  color="blue"
+                  color="#1877F2"
                 />
               </a>
-              <Twitter className="cursor-pointer hover:text-black" size={15} />
-              <Youtube className="cursor-pointer hover:text-black" size={15} />
-              <Linkedin className="cursor-pointer hover:text-black" size={15} />
+              {/* <Twitter className="cursor-pointer hover:text-black" size={15} /> */}
+              {/* <Youtube className="cursor-pointer hover:text-black" size={15} /> */}
             </div>
           </div>
         </div>

@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ArrowUp, X } from "lucide-react";
 import HomePage from "./Screens/Header/HomePage";
 import DynamicHomePage from "./Screens/Components/DynamicHomePage/DynamicHomePage";
+import PageNotFound from "./Screens/Components/PageNotFound/PageNotFound";
 
 const App = () => {
   const [showScroll, setShowScroll] = useState(false);
@@ -24,12 +25,9 @@ const App = () => {
         <Routes>
           {/* <Route path="/" element={<HomePage />} /> */}
           <Route path="/" element={<DynamicHomePage />} />
-          <Route
-            path="/category/:catId/:subCatId"
-            element={<DynamicHomePage />}
-          />
+          <Route path="/category/:catId" element={<DynamicHomePage />} />
+          <Route path="*" element={<PageNotFound />} />
         </Routes>
-
         {showScroll && (
           <button
             onClick={scrollToTop}
@@ -39,7 +37,6 @@ const App = () => {
             <ArrowUp className="w-4 h-4" />
           </button>
         )}
-
         <ToastContainer position="top-center" autoClose={3000} />
       </>
     </BrowserRouter>
