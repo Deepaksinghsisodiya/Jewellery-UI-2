@@ -404,10 +404,11 @@ const NavbarComponent = () => {
             className="w-8 h-8 sm:w-14 sm:h-14 ml-1 sm:ml-2 object-contain drop-shadow-md"
           />
           <h1
-            className="text-transparent bg-clip-text
+            className="text-transparent bg-clip-text 
              bg-gradient-to-r from-pink-500 via-pink-400 to-rose-500
-             font-playfair font-extrabold tracking-wide sm:tracking-widest italic
-             text-xl sm:text-3xl md:text-4xl lg:text-5xl ml-2 sm:ml-3 drop-shadow-lg"
+             font-cinzel font-bold tracking-wide 
+             text-2xl sm:text-3xl md:text-4xl lg:text-5xl 
+             ml-2 sm:ml-3 drop-shadow-md"
           >
             GK JEWELERS
           </h1>
